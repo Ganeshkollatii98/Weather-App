@@ -1,24 +1,17 @@
 
 
-import React, { Component } from 'react';
+import React from 'react';
+import SearchUi from './SearchUi';
 
-class Home extends Component {
+class Home extends React.Component {
     render() {
         return (
-            <div>
-                Home page
-            </div>
+           <div>
+              <SearchUi/>
+           </div>   
         );
     }
 }
 
 export default Home;
-// var Home=() =>{
-//   return (
-//     <div className="">
-//       Home
-//     </div>
-//   );
-// }
 
-// export default Home;
