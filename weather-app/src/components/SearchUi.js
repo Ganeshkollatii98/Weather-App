@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 var SearchUi = () => {
 
     return (
-        <div className="font-sans h-full flex flex-col items-center ">
-            <div>
-                <img src="https://miro.medium.com/max/512/1*hiZL1BonvYRL5hlzxops3A.png" alt="app- logo"></img>
-            </div>
+        <div className="font-sans flex flex-col items-center h-full sm:flex  ">
+            
+                <img src="https://cdn-icons-png.flaticon.com/512/1163/1163763.png" alt="app- logo" className="mt-12 w-4/12 lg:w-3/12 md:w-3/12  sm:w-4/12  m-5 "></img>
+            
             <div className="capitalize font-bold mb-2">
                 the weatherMan project
             </div>
