@@ -2,13 +2,17 @@ import React, { useEffect} from 'react';
 import AOS from "aos";
 var Forecast = () => {
     useEffect(() => {
+        
         AOS.init(
             {
                 duration: 1000
             }
         );
 
+       
+
     }, []);
+
     return (
         <div className="tracking-wide bg-gray-200 flex  flex-col items-center" data-aos="fade-up" data-aos-delay="400">
             <div className="flex flex-col items-center font-sans text-xl lg:w-10/12 sm:w-10/12 w-10/12" data-aos="fade-up" data-aos-delay="800">

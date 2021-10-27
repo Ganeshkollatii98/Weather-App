@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import Forecast from './Forecast';
-import WeatherData from './WeatherData';
+
+
 
 var WeatherSearchResults = () => {
 
     return (
         <div>
-             <WeatherData/>
-            <Forecast />
+            {/* <WeatherData/> */}
+            {/* <Forecast /> */}
         </div>
-    
+
     )
 }
 

@@ -1,6 +1,5 @@
 import React, { Component ,useEffect} from 'react';
-import Forecast from './Forecast';
-import WeatherData from './WeatherData';
+
 import AOS from "aos";
 import "aos/dist/aos.css"
 class About extends Component {

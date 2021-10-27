@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
 function Page_404() {
     var handleCrossIcon=(event)=>{
-        console.log("clicked cross mark",event)
+        console.log("clicked cross mark",event.target.classList)
+       
     }
     return (
         <div className="flex flex-col items-center relative top-10">
