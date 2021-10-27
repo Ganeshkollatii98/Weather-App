@@ -17,12 +17,12 @@ var WeatherData = (props) => {
 
         );
         
-        console.log("Weather Data STATE:",state.getState())
-        console.log("name of sity:",state.getState().weather.name)
-        console.log("temp:",state.getState().weather.main.temp)
-        console.log("humidity:",state.getState().weather.main.humidity)
-        console.log("status:",state.getState().weather.weather[0].main)
-        console.log("speed:",state.getState().weather.wind.speed)
+        // console.log("Weather Data STATE:",state.getState())
+        // console.log("name of sity:",state.getState().weather.name)
+        // console.log("temp:",state.getState().weather.main.temp)
+        // console.log("humidity:",state.getState().weather.main.humidity)
+        // console.log("status:",state.getState().weather.weather[0].main)
+        // console.log("speed:",state.getState().weather.wind.speed)
     }, []);
     const handleGoToBackBtn=()=>{
         state.dispatch(changeResultStatus(false))

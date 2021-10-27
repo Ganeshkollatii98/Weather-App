@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AOS from "aos";
 import { state } from '../index'
 import WeatherData from './WeatherData';
-import { insertWeather, insertForecast, changeResultStatus } from '../Actions/Action'
+import { insertWeather, change404PageStatus,insertForecast, changeResultStatus } from '../Actions/Action'
 
 
 const API_Key = "f5e6dffd4e0cd8179e88918f4e11a0e6"
@@ -42,9 +42,7 @@ class SearchUi extends Component {
         const URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_Key}`
         fetch(URL).then((responce) => {
             if (responce.status >= 400) {
-                this.setState({
-                    page_404: true
-                })
+                state.dispatch(change404PageStatus(true))
             }
             return responce.json();
         }).then(responce => {
@@ -68,11 +66,12 @@ class SearchUi extends Component {
 
 
     render() {
-        const { foundResult } = state.getState()
-        console.log(foundResult)
+        const { foundResult,page404Status } = state.getState()
+        console.log(foundResult,page404Status)
         console.log("weather STATE",state.getState())
         return (
             <>
+                
                 {foundResult === true ? <WeatherData /> :
                     <div className="font-sans flex flex-col items-center h-full sm:flex">
 
