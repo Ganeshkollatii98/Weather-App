@@ -16,7 +16,7 @@ export const WeatherData = (state = initilState, actions) => {
     else if (actions.type === ADD_FORECAST) {
         return {
             ...state,
-            foreCast: actions.responce,
+            foreCast: actions.data,
         }
     }
     else if (actions.type === UPDATE_RESULT_STATUS) {

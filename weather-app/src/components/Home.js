@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import AOS from "aos";
 import { state } from '../index'
 import WeatherData from './WeatherData';
-import { insertWeather, change404PageStatus,insertForecast, changeResultStatus } from '../Actions/Action'
+import { insertWeather, change404PageStatus, insertForecast, changeResultStatus } from '../Actions/Action'
+import Page_404 from './Page_404';
 
 
 const API_Key = "f5e6dffd4e0cd8179e88918f4e11a0e6"
@@ -42,15 +43,17 @@ class SearchUi extends Component {
         const URL2 = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_Key}`
         fetch(URL).then((responce) => {
             if (responce.status >= 400) {
+                console.log("responce status",responce.status )
                 state.dispatch(change404PageStatus(true))
             }
             return responce.json();
         }).then(responce => {
-            this.setState({
-                result: true
-            })
+            console.log("responce cod" ,responce.cod)
+           if(responce.cod!=404){
+                
             state.dispatch(insertWeather({ responce }))
             state.dispatch(changeResultStatus(true))
+           }
         })
 
         // Forecast Data Fetch
@@ -66,13 +69,22 @@ class SearchUi extends Component {
 
 
     render() {
-        const { foundResult,page404Status } = state.getState()
-        console.log(foundResult,page404Status)
-        console.log("weather STATE",state.getState())
+        let rend;
+        const { foundResult, page404Status } = state.getState()
+        console.log(foundResult, page404Status)
+        console.log("weather STATE", state.getState())
+
+        if(foundResult===true && page404Status=== false){
+            rend= <WeatherData/>
+        }
+        else if(foundResult === false && page404Status===true){
+             rend=<Page_404/>
+        }
+        
         return (
             <>
-                
-                {foundResult === true ? <WeatherData /> :
+
+                { foundResult || page404Status ? rend :
                     <div className="font-sans flex flex-col items-center h-full sm:flex">
 
                         <img data-aos="fade-up" src="https://cdn-icons-png.flaticon.com/512/1163/1163763.png" alt="app- logo" className="mt-12 w-4/12 lg:w-2/12 md:w-3/12  sm:w-4/12  m-5 "></img>
@@ -88,14 +100,14 @@ class SearchUi extends Component {
                             <button type="submit" onClick={this.handleSearchButton} className="capitalize ml-4 w-auto p-2 rounded-xl text-white bg-indigo-900 transition duration-500 ease-in-out  hover:bg-blue-800 transform hover:-translate-y-1 hover:scale-110" >check weather</button>
                         </div>
                     </div>
-
-
-
                 }
+
+
             </>
 
 
         );
+
     }
 }
 
